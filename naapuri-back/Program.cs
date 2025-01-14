@@ -1,6 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,13 +6,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddControllers(); // Add this line to register controllers
 
-// Configure logging
-builder.Logging.ClearProviders();
-builder.Logging.AddConsole();
 
 // Configure DbContext with PostgreSQL
-builder.Services.AddDbContext<YourDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<DbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("ConnectionString")));
 
 var app = builder.Build();
 
