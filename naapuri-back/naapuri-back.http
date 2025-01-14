@@ -1,0 +1,6 @@
+@naapuri_back_HostAddress = http://localhost:5183
+
+GET {{naapuri_back_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
